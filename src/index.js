@@ -3,11 +3,36 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';  
+
+const theme = createMuiTheme({
+  palette: {
+     primary: {
+        light: 'rgb(255, 113, 181)',
+        main: 'rgb(255, 84, 167)',
+        dark: 'rgb(255, 113, 181)'
+     },
+     secondary: {
+       main: 'rgb(255, 113, 181)',
+       dark: 'rgb(255, 113, 181)',
+       light: 'rgb(255, 113, 181)'
+     },
+  },
+  typography: { 
+     useNextVariants: true
+  }
+});
 
 ReactDOM.render(
+  <MuiThemeProvider theme = { theme }>
+  <DndProvider backend={HTML5Backend}>
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
+  </DndProvider>
+  </MuiThemeProvider>,
   document.getElementById('root')
 );
 
